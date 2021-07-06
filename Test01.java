@@ -1,36 +1,34 @@
-public class Test01
-{
-	public static void main(String[] args)
-	{
-		//创建USER对象
-		//u是一个局部变量
-		//u是一个引用
-		//u保存的内存地址指向堆内存的User对象
-		User u = new User();
+package Study02;
 
-		//输出User对象内部实例变量的值
-		System.out.println(u.no);//0
-		System.out.println(u.name);//null
-		System.out.println(u.addr);//null
+/**
+ * 方法调用时，涉及到参数传递的问题，只有一种语法机制
+ * ”将变量中保存的值传过去“
+ * 只是有时候保存的是个值，有时候保存的是个地址
+ *
+ *
+ */
 
-		//修改User对象内部实际变量的值
-		u.no = 110;
-		u.name ="jack";//jack是一个java对象，属于String对象
-		u.addr= new Address();
-
-		//在main方法当中目前只能看到一个引用“u”
-		//一切都是只能通过u来进行访问
-		System.out.println(u.name + "居住在哪个城市" + u.addr.city);
-		System.out.println(u.name + "居住在哪个街道" + u.addr.street);
-		System.out.println(u.name + "邮编" + u.addr.zipcode);
-
-		u.addr.city = "北京";
-		u.addr.street = "朝阳";
-		u.addr.zipcode = "11111111";
-
-		System.out.println(u.name + "居住在哪个城市" + u.addr.city);
-		System.out.println(u.name + "居住在哪个街道" + u.addr.street);
-		System.out.println(u.name + "邮编" + u.addr.zipcode);
+public class Test01 {
+	public static void main(String[] args) {
+		User u = new User(20);
+		//传递的是保存的值，只是此时的值保存的是一个地址
+		add(u);
+		System.out.println("main-->"+u.age);//21
 	}
+	
+	public static void add(User u) {
+		u.age++;
+		System.out.println("add-->"+u.age);//21
+	}
+}
 
+
+class User{
+	//实例变量
+	int age；
+	
+	//构造方法
+	public User(int i) {
+		age = 1
+	}
 }
